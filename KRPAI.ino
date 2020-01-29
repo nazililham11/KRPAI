@@ -326,7 +326,7 @@ void polar_to_servo(int leg, float alpha, float beta, float gamma)
         // alpha += 90;
         // beta = 180 - beta - 30;
 
-        alpha = 180 - (90 - alpha);
+        alpha = 90 + (90 - alpha);
         beta = beta - 30;
 
         // alpha = 180 - alpha;
