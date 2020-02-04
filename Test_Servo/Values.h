@@ -23,8 +23,8 @@
 #define Y_COXA    37  // mm between front/back legs /2
 
 #define L_COXA    25  //mm distance from coxa servo to femur servo
-#define L_FEMUR   43  //mm distance from femur servo to tibia servo
-#define L_TIBIA   71  //mm distance from tibia servo to foot
+#define L_FEMUR   45  //mm distance from femur servo to tibia servo
+#define L_TIBIA   72  //mm distance from tibia servo to foot
 
 #define SQ_L_FEMUR   1849
 #define SQ_L_TIBIA   541
