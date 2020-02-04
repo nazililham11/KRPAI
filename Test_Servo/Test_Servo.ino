@@ -1,7 +1,7 @@
-#include "../ATMega128_Arduino_Pin.h"
-#include "Servo.h"
-#include "CommandHandler.h"
-#include "../Values.h"
+#include "ATMega128_Arduino_Pin.h"
+#include <Servo.h>
+#include <CommandHandler.h>
+#include "Values.h"
 
 #define SERVO_HOME_ANGLE 90
 
