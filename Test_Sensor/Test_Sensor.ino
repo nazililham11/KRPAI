@@ -1,5 +1,5 @@
 #include "ATMega128_Arduino_Pin.h"
-#include "Ultrasonic_lib.h"
+#include "Ultrasonic.h"
 
 Ultrasonic ultrasonic[] = {
     Ultrasonic(PORT_E_5), //Front
@@ -49,13 +49,13 @@ void read_distance(){
 
 void print_distance(){
     Serial.print(F("Front:"));
-    Serial.print(String(ultrasonic[US_FRONT].distance));
+    Serial.print(ultrasonic[US_FRONT].distance);
     Serial.print(F("\tLeft:"));
-    Serial.print(String(ultrasonic[US_LEFT].distance));
+    Serial.print(ultrasonic[US_LEFT].distance);
     Serial.print(F("\tRight:"));
-    Serial.print(String(ultrasonic[US_RIGHT].distance));
+    Serial.print(ultrasonic[US_RIGHT].distance);
     Serial.print(F("\tFront Left:"));
-    Serial.print(String(ultrasonic[US_FRONT_LEFT].distance));
+    Serial.print(ultrasonic[US_FRONT_LEFT].distance);
     Serial.print(F("\tFront Right:"));
-    Serial.print(String(ultrasonic[US_FRONT_RIGHT].distance));
+    Serial.print(ultrasonic[US_FRONT_RIGHT].distance);
 }

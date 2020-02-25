@@ -1,4 +1,3 @@
-#define US_FRONT 0
 #define US_FRONT        0
 #define US_LEFT         1
 #define US_RIGHT        2

@@ -1,3 +1,10 @@
+/* Commands --------------------------------------------------------------------*/
+#if DEBUG_COMMAND && DEBUG
+    #include <CommandHandler.h>
+    CommandHandler<> SerialCommandHandler(Serial, '[', ']');
+#endif
+
+
 void command_init(void)
 {
     #if DEBUG_COMMAND && DEBUG

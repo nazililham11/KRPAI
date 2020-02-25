@@ -1,3 +1,71 @@
+/* Servos --------------------------------------------------------------------*/
+//define 12 servos for 4 legs and 3 dof
+Servo servo[4][3];
+//define servo's ports
+const uint8_t servo_pin[4][3] = {
+    {FRONT_LEFT_COXA,   FRONT_LEFT_FEMUR,   FRONT_LEFT_TIBIA},  //Front Left
+    {REAR_LEFT_COXA,    REAR_LEFT_FEMUR,    REAR_LEFT_TIBIA},   //Rear Left
+    {FRONT_RIGHT_COXA,  FRONT_RIGHT_FEMUR,  FRONT_RIGHT_TIBIA}, //Front Right
+    {REAR_RIGHT_COXA,   REAR_RIGHT_FEMUR,   REAR_RIGHT_TIBIA}   //Rear Right
+};
+
+/* Size of the robot ---------------------------------------------------------*/
+const float length_a = L_FEMUR; //Femur
+const float length_b = L_TIBIA; //Tibia
+const float length_c = L_COXA;  //Coxa
+const float length_side = 71;   //Length between leg
+const float z_absolute = -50;   //max z coordinates
+/* Constants for movement ----------------------------------------------------*/
+const float z_default = -85;     //z default coordinates
+const float z_up = -65;          //z up coordinates
+const float z_boot = z_absolute; //z sit coordinates
+const float x_default = 62;
+const float x_offset = 0;
+const float y_start = 0;
+const float y_step = 40;
+/* variables for movement ----------------------------------------------------*/
+volatile float site_now[4][3];    //real-time coordinates of the end of each leg
+volatile float site_expect[4][3]; //expected coordinates of the end of each leg
+float temp_speed[4][3];           //each axis' speed, needs to be recalculated before each movement
+float move_speed;                 //movement speed
+float speed_multiple = 1;         //movement speed multiple
+float spot_turn_speed = 3;
+float leg_move_speed = 10;
+float body_move_speed = 1.5;
+float stand_seat_speed = 1;
+volatile int rest_counter; //+1/0.02s, for automatic rest
+//function's parameter
+const float KEEP = 255;
+//define PI for calculation
+const float pi = 3.1415926;
+/* Constants for turn --------------------------------------------------------*/
+//temp length
+const float temp_a = sqrt(pow(2 * x_default + length_side, 2) + pow(y_step, 2));
+const float temp_b = 2 * (y_start + y_step) + length_side;
+const float temp_c = sqrt(pow(2 * x_default + length_side, 2) + pow(2 * y_start + y_step + length_side, 2));
+const float temp_alpha = acos((pow(temp_a, 2) + pow(temp_b, 2) - pow(temp_c, 2)) / 2 / temp_a / temp_b);
+//site for turn
+const float turn_x1 = (temp_a - length_side) / 2;
+const float turn_y1 = y_start + y_step / 2;
+const float turn_x0 = turn_x1 - temp_b * cos(temp_alpha);
+const float turn_y0 = temp_b * sin(temp_alpha) - turn_y1 - length_side;
+/* ---------------------------------------------------------------------------*/
+
+void start_servo_service(void);
+void site_init(void);
+void servo_attach(void);
+void servo_detach(void);
+void servo_service(void);
+void set_site(uint8_t leg, float x, float y, float z);
+void wait_reach(uint8_t leg);
+void wait_all_reach(void);
+void set_site(void);
+void cartesian_to_polar(volatile float &alpha, volatile float &beta, volatile float &gamma,
+                        volatile float x, volatile float y, volatile float z);
+void polar_to_servo(uint8_t leg, float &alpha, float &beta, float &gamma);
+void write_to_servo(uint8_t leg, float alpha, float beta, float gamma);
+
+
 void start_servo_service(void)
 {
     //start servo service
@@ -148,8 +216,8 @@ void wait_all_reach(void)
         wait_reach(i);
     }
 
-    #if GRAIT_DEBUG && DEBUG
-        delay(GRAIT_DELAYS);
+    #if GAIT_DEBUG && DEBUG
+        delay(GAIT_DELAYS);
     #endif
 }
 
