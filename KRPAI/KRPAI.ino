@@ -27,6 +27,7 @@
 #include <FlexiTimer2.h>			  //set a timer to manage all servos
 
 #include "Config.h"             //Robot settings
+#include "Servo_PCA9685.h"              //Servo 
 #include "Kinematics.h"         //Kinematics algoritm
 #include "Command.h"            //Command DEBUG
 #include "Ultrasonic.h"         //Ultrasonic sensor
@@ -45,7 +46,7 @@ void setup()
     command_init();
 
     site_init();           //init default site
-    servo_attach();        //initialize servos
+    servo_init();        //initialize servos
     start_servo_service(); //start servo service
 
     Serial.println(F("Robot initialization Complete"));

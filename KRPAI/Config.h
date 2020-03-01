@@ -36,6 +36,25 @@
 
 
 //--------------------------------------------------------------------
+//[SERVO PCA9685 PIN CONFIGURATION]
+#define SERVO_PCA9685_FRONT_LEFT_COXA   1
+#define SERVO_PCA9685_FRONT_LEFT_FEMUR  2
+#define SERVO_PCA9685_FRONT_LEFT_TIBIA  3
+    
+#define SERVO_PCA9685_REAR_LEFT_COXA    4
+#define SERVO_PCA9685_REAR_LEFT_FEMUR   5
+#define SERVO_PCA9685_REAR_LEFT_TIBIA   6
+    
+#define SERVO_PCA9685_FRONT_RIGHT_COXA  7
+#define SERVO_PCA9685_FRONT_RIGHT_FEMUR 8
+#define SERVO_PCA9685_FRONT_RIGHT_TIBIA 9
+    
+#define SERVO_PCA9685_REAR_RIGHT_COXA   10
+#define SERVO_PCA9685_REAR_RIGHT_FEMUR  11
+#define SERVO_PCA9685_REAR_RIGHT_TIBIA  12
+
+
+//--------------------------------------------------------------------
 //[LEG DIMENSIONS]
 #define L_COXA    25        //mm distance from coxa servo to femur servo
 #define L_FEMUR   45        //mm distance from femur servo to tibia servo
@@ -86,4 +105,4 @@
 #define LEFT_WALL_THRESHOLD     10       //cm left threshold
 #define RIGHT_WALL_THRESHOLD    10       //cm right threshold
 
-#define ULTRASONIC_MEAN_COUNT 3         //many of sensor readings to get mean distance
+#define ULTRASONIC_MEAN_COUNT   3         //many of sensor readings to get mean distance

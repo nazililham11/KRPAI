@@ -16,9 +16,16 @@ class InfDistance
     }
 };
 
-
+/* Infrared Distance --------------------------------------------------------------------*/
+InfDistance infDistance[] = {
+    InfDistance(INF_DISTANCE_FRONT_PIN),    //Front
+    InfDistance(INF_DISTANCE_LEFT_PIN),     //Left
+    InfDistance(INF_DISTANCE_RIGHT_PIN),    //Right
+};
 
 void read_all_ir_distance()
 {
-
+    infDistance[INF_DISTANCE_FRONT].read_distance();
+    infDistance[INF_DISTANCE_LEFT].read_distance();
+    infDistance[INF_DISTANCE_RIGHT].read_distance();
 }

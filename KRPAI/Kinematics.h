@@ -1,14 +1,3 @@
-/* Servos --------------------------------------------------------------------*/
-//define 12 servos for 4 legs and 3 dof
-Servo servo[4][3];
-//define servo's ports
-const uint8_t servo_pin[4][3] = {
-    {FRONT_LEFT_COXA,   FRONT_LEFT_FEMUR,   FRONT_LEFT_TIBIA},  //Front Left
-    {REAR_LEFT_COXA,    REAR_LEFT_FEMUR,    REAR_LEFT_TIBIA},   //Rear Left
-    {FRONT_RIGHT_COXA,  FRONT_RIGHT_FEMUR,  FRONT_RIGHT_TIBIA}, //Front Right
-    {REAR_RIGHT_COXA,   REAR_RIGHT_FEMUR,   REAR_RIGHT_TIBIA}   //Rear Right
-};
-
 /* Size of the robot ---------------------------------------------------------*/
 const float length_a = L_FEMUR; //Femur
 const float length_b = L_TIBIA; //Tibia
@@ -53,8 +42,6 @@ const float turn_y0 = temp_b * sin(temp_alpha) - turn_y1 - length_side;
 
 void start_servo_service(void);
 void site_init(void);
-void servo_attach(void);
-void servo_detach(void);
 void servo_service(void);
 void set_site(uint8_t leg, float x, float y, float z);
 void wait_reach(uint8_t leg);
@@ -89,33 +76,6 @@ void site_init(void)
         for (uint8_t j = 0; j < 3; j++)
         {
             site_now[i][j] = site_expect[i][j];
-        }
-    }
-}
-
-
-void servo_attach(void)
-{
-    for (uint8_t i = 0; i < 4; i++)
-    {
-        for (uint8_t j = 0; j < 3; j++)
-        {
-            servo[i][j].attach(servo_pin[i][j]);
-            delay(100);
-        }
-    }
-    Serial.println("Servos initialized");
-}
-
-
-void servo_detach(void)
-{
-    for (uint8_t i = 0; i < 4; i++)
-    {
-        for (uint8_t j = 0; j < 3; j++)
-        {
-            servo[i][j].detach();
-            delay(100);
         }
     }
 }
@@ -265,9 +225,9 @@ void polar_to_servo(uint8_t leg, float &alpha, float &beta, float &gamma)
 
 void write_to_servo(uint8_t leg, float alpha, float beta, float gamma)
 {
-    servo[leg][0].write(gamma); //Coxa
-    servo[leg][1].write(alpha); //Femur
-    servo[leg][2].write(beta);  //Tibia
+    setServo(leg, 0, gamma);    //Coxa
+    setServo(leg, 1, alpha);    //Femur
+    setServo(leg, 2, beta);     //Tibia
 
     #if DEBUG && SERVO_DEBUG
         Serial.print(F("Write to Leg "));
