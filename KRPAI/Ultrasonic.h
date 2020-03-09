@@ -9,7 +9,7 @@ class Ultrasonic
         pin = _pin;
     }
 
-    void read_distance()
+    float read_distance()
     {
         pinMode(pin, OUTPUT);
 
@@ -21,9 +21,11 @@ class Ultrasonic
 
         distance = pulseIn(pin, HIGH);
         distance = (distance / 2.0) / 29.1;
+        
+        return distance;
     }
 
-    void read_mean_distance(uint8_t loop_count = ULTRASONIC_MEAN_COUNT)
+    float read_mean_distance(uint8_t loop_count = ULTRASONIC_MEAN_COUNT)
     {
 
         float total = 0;
@@ -35,6 +37,8 @@ class Ultrasonic
         }
 
         distance = (float)total / (float)loop_count;
+
+        return distance;
     }
 };
 
@@ -61,7 +65,4 @@ void read_wall(void)
     bool front_wall = ultrasonic[ULTRASONIC_FRONT].distance < FRONT_WALL_THRESHOLD;
     bool left_wall  = ultrasonic[ULTRASONIC_LEFT].distance  < LEFT_WALL_THRESHOLD;
     bool right_wall = ultrasonic[ULTRASONIC_RIGHT].distance < RIGHT_WALL_THRESHOLD;
-
-
-    
 }
