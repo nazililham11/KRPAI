@@ -6,7 +6,7 @@
 #define SERVO_HOME_ANGLE 90
 
 const uint8_t servo_pin[4][3] = {{PORT_A_0, PORT_A_1, PORT_A_2},
-                                 {PORT_D_0, PORT_D_1, PORT_D_2},
+                                 {PORT_D_7, PORT_D_6, PORT_D_5},
                                  {PORT_B_7, PORT_B_6, PORT_B_5},
                                  {PORT_F_7, PORT_F_6, PORT_F_5}};
 
