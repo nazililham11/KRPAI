@@ -27,11 +27,12 @@
 #include <FlexiTimer2.h>			  //set a timer to manage all servos
 
 #include "Config.h"             //Robot settings
-#include "Servo_PCA9685.h"              //Servo 
+#include "Servo_Generic.h"      //Servo 
 #include "Kinematics.h"         //Kinematics algoritm
-#include "Command.h"            //Command DEBUG
+#include "Gait.h"               //Gait 
 #include "Ultrasonic.h"         //Ultrasonic sensor
 #include "MazeSolving.h"        //Maze solving algoritm
+#include "Command.h"            //Command DEBUG
 
 
 /*
@@ -62,19 +63,19 @@ void setup()
 void loop()
 {
 
-    // Serial.println(F("Turn left"));
-    // turn_left(5);
-    // delay(2000);
+    Serial.println(F("Turn left"));
+    turn_left(5);
+    delay(2000);
 
-    // Serial.println(F("Turn right"));
-    // turn_right(5);
-    // delay(2000);
+    Serial.println(F("Turn right"));
+    turn_right(5);
+    delay(2000);
 
     Serial.println(F("Step forward"));
     step_forward(10);
     delay(2000);
 
-    // Serial.println(F("Sit"));
-    // sit();
-    // delay(5000);
+    Serial.println(F("Sit"));
+    sit();
+    delay(5000);
 }

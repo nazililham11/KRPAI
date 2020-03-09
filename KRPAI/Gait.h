@@ -1,3 +1,5 @@
+float left_speed = 1;
+float right_speed = 0.5;
 
 /*
   - sit
@@ -196,22 +198,22 @@ void step_forward(unsigned int step)
             //leg 2&1 move
             set_site(2, x_default + x_offset, y_start, z_up);
             wait_all_reach();
-            set_site(2, x_default + x_offset, y_start + 2 * y_step, z_up);
+            set_site(2, x_default + x_offset, (y_start + 2 * y_step) * left_speed, z_up);
             wait_all_reach();
-            set_site(2, x_default + x_offset, y_start + 2 * y_step, z_default + 7);
+            set_site(2, x_default + x_offset, (y_start + 2 * y_step) * left_speed, z_default + 7);
             wait_all_reach();
 
             move_speed = body_move_speed;
 
             set_site(0, x_default + x_offset, y_start, z_default);
-            set_site(1, x_default + x_offset, y_start + 2 * y_step, z_default);
+            set_site(1, x_default + x_offset, (y_start + 2 * y_step) * right_speed, z_default);
             set_site(2, x_default - x_offset, y_start + y_step, z_default);
             set_site(3, x_default - x_offset, y_start + y_step, z_default);
             wait_all_reach();
 
             move_speed = leg_move_speed;
 
-            set_site(1, x_default + x_offset, y_start + 2 * y_step, z_up);
+            set_site(1, x_default + x_offset, (y_start + 2 * y_step) * right_speed, z_up);
             wait_all_reach();
             set_site(1, x_default + x_offset, y_start, z_up);
             wait_all_reach();
@@ -224,9 +226,9 @@ void step_forward(unsigned int step)
             //leg 0&3 move
             set_site(0, x_default + x_offset, y_start, z_up);
             wait_all_reach();
-            set_site(0, x_default + x_offset, y_start + 2 * y_step, z_up);
+            set_site(0, x_default + x_offset, (y_start + 2 * y_step) * right_speed, z_up);
             wait_all_reach();
-            set_site(0, x_default + x_offset, y_start + 2 * y_step, z_default + 7);
+            set_site(0, x_default + x_offset, (y_start + 2 * y_step) * right_speed, z_default + 7);
             wait_all_reach();
 
             move_speed = body_move_speed;
@@ -234,12 +236,12 @@ void step_forward(unsigned int step)
             set_site(0, x_default - x_offset, y_start + y_step, z_default);
             set_site(1, x_default - x_offset, y_start + y_step, z_default);
             set_site(2, x_default + x_offset, y_start, z_default);
-            set_site(3, x_default + x_offset, y_start + 2 * y_step, z_default);
+            set_site(3, x_default + x_offset, (y_start + 2 * y_step) * left_speed, z_default);
             wait_all_reach();
 
             move_speed = leg_move_speed;
 
-            set_site(3, x_default + x_offset, y_start + 2 * y_step, z_up);
+            set_site(3, x_default + x_offset, (y_start + 2 * y_step) * left_speed, z_up);
             wait_all_reach();
             set_site(3, x_default + x_offset, y_start, z_up);
             wait_all_reach();
