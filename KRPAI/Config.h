@@ -60,6 +60,8 @@
 #define L_FEMUR   45        //mm distance from femur servo to tibia servo
 #define L_TIBIA   72        //mm distance from tibia servo to foot
 
+#define L_SIDE_LEG	77		//mm distance between leg 
+
 
 //--------------------------------------------------------------------
 //[DEBUG]

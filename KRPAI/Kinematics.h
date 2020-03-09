@@ -1,17 +1,17 @@
 /* Size of the robot ---------------------------------------------------------*/
-const float length_a = L_FEMUR; //Femur
-const float length_b = L_TIBIA; //Tibia
-const float length_c = L_COXA;  //Coxa
-const float length_side = 71;   //Length between leg
-const float z_absolute = -50;   //max z coordinates
+float length_a = L_FEMUR;           //Femur
+float length_b = L_TIBIA;           //Tibia
+float length_c = L_COXA;            //Coxa
+float length_side = L_SIDE_LEG;     //Length between leg
+float z_absolute = -50;             //max z coordinates
 /* Constants for movement ----------------------------------------------------*/
-const float z_default = -85;     //z default coordinates
-const float z_up = -65;          //z up coordinates
-const float z_boot = z_absolute; //z sit coordinates
-const float x_default = 62;
-const float x_offset = 0;
-const float y_start = 0;
-const float y_step = 40;
+float z_default = -85;              //z default coordinates
+float z_up = -65;                   //z up coordinates
+float z_boot = z_absolute;          //z sit coordinates
+float x_default = 62;
+float x_offset = 0;
+float y_start = 0;
+float y_step = 40;
 /* variables for movement ----------------------------------------------------*/
 volatile float site_now[4][3];    //real-time coordinates of the end of each leg
 volatile float site_expect[4][3]; //expected coordinates of the end of each leg
